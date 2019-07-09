@@ -6,7 +6,7 @@ class GitHubCard extends StatefulWidget {
 
   final GitHub github;
 
-  GitHubCard(this.github)
+  GitHubCard(this.github);
 
   @override
   State<StatefulWidget> createState() => _GitHubCardState(this.github);
@@ -16,7 +16,7 @@ class _GitHubCardState extends State<StatefulWidget> {
 
   final GitHub github;
 
-  _GitHubCardState(this.github)
+  _GitHubCardState(this.github);
 
   @override
   Widget build(BuildContext context) {
