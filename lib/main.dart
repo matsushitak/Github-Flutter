@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                   return _buildCard(repository);
                 },
                 itemCount: _repositories.length,
-              );,
+              ),
             )
           ],
         ),
@@ -102,21 +102,21 @@ class _HomePageState extends State<HomePage> {
             ),
             repository.language != null
                 ? Padding(
-              padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
-              child: Text(
-                repository.language,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 12.0),
-              ),
-            )
+                    padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+                    child: Text(
+                      repository.language,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 12.0),
+                    ),
+                  )
                 : Container(),
             repository.description != null
                 ? Padding(
-              padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
-              child: Text(repository.description,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w200, color: Colors.grey)),
-            )
+                    padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+                    child: Text(repository.description,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w200, color: Colors.grey)),
+                  )
                 : Container(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
