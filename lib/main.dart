@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:github/github.dart';
+import 'package:github/model/github.dart';
 import 'package:github/widget/card.dart';
 import 'package:http/http.dart' as http;
 

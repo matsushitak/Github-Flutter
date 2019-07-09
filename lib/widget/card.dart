@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:github/github.dart';
+import 'package:github/model/github.dart';
 import 'package:flutter/material.dart';
 
 class GitHubCard extends StatefulWidget {
