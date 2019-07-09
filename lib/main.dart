@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:github/github.dart';
+import 'package:github/widget/card.dart';
 import 'package:http/http.dart' as http;
 
 void main() => runApp(App());
@@ -59,7 +60,7 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
                   final repository = _repositories[index];
-                  return _buildCard(repository);
+                  return GitHubCard(repository);
                 },
                 itemCount: _repositories.length,
               ),
@@ -85,63 +86,5 @@ class _HomePageState extends State<HomePage> {
     } else {
       throw Exception('Fail to search repository');
     }
-  }
-
-  Widget _buildCard(GitHub repository) {
-    return Card(
-        margin: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(12.0),
-              child: Text(
-                repository.fullName,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-              ),
-            ),
-            repository.language != null
-                ? Padding(
-                    padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
-                    child: Text(
-                      repository.language,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 12.0),
-                    ),
-                  )
-                : Container(),
-            repository.description != null
-                ? Padding(
-                    padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
-                    child: Text(repository.description,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w200, color: Colors.grey)),
-                  )
-                : Container(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Icon(Icons.star),
-                SizedBox(
-                  width: 50.0,
-                  child: Text(repository.stargazersCount.toString()),
-                ),
-                Icon(Icons.remove_red_eye),
-                SizedBox(
-                  width: 50.0,
-                  child: Text(repository.watchersCount.toString()),
-                ),
-                Text("Fork:"),
-                SizedBox(
-                  width: 50.0,
-                  child: Text(repository.forksCount.toString()),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 16.0,
-            )
-          ],
-        ));
   }
 }
