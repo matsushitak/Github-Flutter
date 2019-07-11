@@ -1,23 +1,17 @@
 import 'package:flutter/cupertino.dart';
-import 'package:github/model/github.dart';
 import 'package:flutter/material.dart';
+import 'package:github/model/github.dart';
 
 class GitHubCard extends StatefulWidget {
-
   final GitHub github;
 
   GitHubCard(this.github);
 
   @override
-  State<StatefulWidget> createState() => _GitHubCardState(this.github);
+  State<StatefulWidget> createState() => _GitHubCardState();
 }
 
-class _GitHubCardState extends State<StatefulWidget> {
-
-  final GitHub github;
-
-  _GitHubCardState(this.github);
-
+class _GitHubCardState extends State<GitHubCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -28,27 +22,27 @@ class _GitHubCardState extends State<StatefulWidget> {
             Padding(
               padding: EdgeInsets.all(12.0),
               child: Text(
-                github.fullName,
+                widget.github.fullName,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
               ),
             ),
-            github.language != null
+            widget.github.language != null
                 ? Padding(
-              padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
-              child: Text(
-                github.language,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold, fontSize: 12.0),
-              ),
-            )
+                    padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+                    child: Text(
+                      widget.github.language,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 12.0),
+                    ),
+                  )
                 : Container(),
-            github.description != null
+            widget.github.description != null
                 ? Padding(
-              padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
-              child: Text(github.description,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w200, color: Colors.grey)),
-            )
+                    padding: EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 12.0),
+                    child: Text(widget.github.description,
+                        style: TextStyle(
+                            fontWeight: FontWeight.w200, color: Colors.grey)),
+                  )
                 : Container(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -56,17 +50,17 @@ class _GitHubCardState extends State<StatefulWidget> {
                 Icon(Icons.star),
                 SizedBox(
                   width: 50.0,
-                  child: Text(github.stargazersCount.toString()),
+                  child: Text(widget.github.stargazersCount.toString()),
                 ),
                 Icon(Icons.remove_red_eye),
                 SizedBox(
                   width: 50.0,
-                  child: Text(github.watchersCount.toString()),
+                  child: Text(widget.github.watchersCount.toString()),
                 ),
                 Text("Fork:"),
                 SizedBox(
                   width: 50.0,
-                  child: Text(github.forksCount.toString()),
+                  child: Text(widget.github.forksCount.toString()),
                 ),
               ],
             ),
